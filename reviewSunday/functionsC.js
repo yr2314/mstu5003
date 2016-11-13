@@ -41,3 +41,32 @@ ages.forEach(function(age){
 		console.log('cannot vote');
 	}
 });
+
+
+var inputs = document.querySelectorAll('.question [type="radio"]');
+
+inputs.forEach(function(input){
+  input.addEventListener('click', function(){
+		document.querySelectorAll('.active').forEach(function(el){
+		  el.classList.remove('active');
+		});
+    if (isCorrect(input)) {
+			input.parentNode.classList.add('correct');
+			input.parentNode.classList.add('active');
+			console.log('correct answer!');
+		} else {
+			input.parentNode.classList.add('incorrect');
+			input.parentNode.classList.add('active');
+			console.log('incorrect answer boo!');
+		}
+  });
+});
+
+
+function isCorrect(el) {
+	if (el.classList.contains('correct')) {
+		return true;
+	} else {
+		return false;
+	}
+}
